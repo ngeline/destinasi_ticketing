@@ -7,5 +7,5 @@
 
     $connection = mysqli_connect($host, $username, $password, $database, $port);
 
-    $base_url = `http://localhost:${$port}/ticketing_app`;
+    $base_url = "http://localhost:".$port."/ticketing_app";
 ?>
