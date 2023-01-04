@@ -7,8 +7,11 @@
     header("Location:".$base_url.'/admin/login.php');
   }
 
-  $data = mysqli_query($connection, "SELECT *
-                        FROM pesanan 
+  $data = mysqli_query($connection, "SELECT ps.*, u.name, w.nama_wisata, p.nama_permainan
+                        FROM pesanan ps, users u, wisata w, permainan p
+                        WHERE ps.user_id = u.id
+                        AND ps.wisata_id = w.id
+                        AND ps.permainan_id = p.id
                       ");
 
   include('../layouts/header.php');
@@ -23,12 +26,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Wisata</h1>
+            <h1 class="m-0">Pesanan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="dashboard.php?dashboard">Home</a></li>
-              <li class="breadcrumb-item active">Wisata</li>
+              <li class="breadcrumb-item active">Pesanan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,8 +46,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title float-left">Data Wisata</h3>
-                <a href="tambah-wisata.php?wisata" class="btn btn-sm btn-success float-right">Tambah Data</a>
+                <h3 class="card-title float-left">Data Pesanan</h3>
+                <a href="tambah-pesanan.php?pesanan" class="btn btn-sm btn-success float-right">Tambah Data</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -52,10 +55,11 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Wisata</th>
-                      <th>Alamat</th>
-                      <th>Harga</th>
-                      <th>Foto</th>
+                      <th>Nama Pengunjung</th>
+                      <th>Wisata</th>
+                      <th>Permainan</th>
+                      <th>Jumlah Orang</th>
+                      <th>Total Pembayaran | Status Pembayaran</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -66,19 +70,14 @@
                       ?>
                       <tr>
                         <td><?=$no++?></td>
+                        <td><?=$row["name"]?></td>
                         <td><?=$row["nama_wisata"]?></td>
-                        <td><?=$row["alamat"]?></td>
-                        <td><?=$row["harga"]?></td>
+                        <td><?=$row["nama_permainan"]?></td>
+                        <td><?=$row["jumlah_orang"]?></td>
+                        <td><?=$row["total_pembayaran"]?> <?php ($row["status_pesanan"] == 1 ) ? '<span class="bg-success mx-1 my-2">Sudah Dibayar</span>' : '<span class="bg-danger mx-1 my-2">Belum Dibayar</span>' ?></td>
                         <td>
-                          <?php if($row["file"] != null || !empty($row["file"])){?>
-                            <img src="<?=$base_url.'/assets/server/img/'.$row["file"]?>" alt="Foto Taman" width="100px">
-                          <?php }else { ?>
-                            <img src="https://kliknusae.com/img/404.jpg" alt="Foto Taman" width="100px">
-                          <?php } ?>
-                        </td>
-                        <td>
-                          <a href="<?= $base_url.'/admin/wisata/edit-wisata.php?wisata&id='.$row["id"] ?>" class="btn btn-sm btn-warning">Edit</a>
-                          <a href="<?= $base_url.'/controllers/Wisata/HapusWisata.php?id='.$row["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus wisata <?php echo $row['nama_wisata']; ?>?');">Delete</a>
+                          <a href="<?= $base_url.'/admin/pesanan/edit-pesanan.php?pesanan&id='.$row["id"] ?>" class="btn btn-sm btn-warning">Edit</a>
+                          <a href="<?= $base_url.'/controllers/Pesanan/HapusPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus pesanan <?php echo $row['name']; ?>?');">Delete</a>
                         </td>
                       </tr>
                     <?php }?>
@@ -87,10 +86,11 @@
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>Nama Wisata</th>
-                      <th>Alamat</th>
-                      <th>Harga</th>
-                      <th>Foto</th>
+                      <th>Nama Pengunjung</th>
+                      <th>Wisata</th>
+                      <th>Permainan</th>
+                      <th>Jumlah Orang</th>
+                      <th>Total Pembayaran | Status Pembayaran</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>

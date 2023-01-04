@@ -7,10 +7,11 @@
     header("Location:".$base_url.'/admin/login.php');
   }
 
-  $wisata = mysqli_query($connection, "SELECT id, nama_wisata FROM wisata");
-  $wisata = mysqli_fetch_assoc($wisata);
+  $id = $_GET["id"];
 
-  $permainan = mysqli_query($connection, "SELECT * FROM permainan");
+  $wisata = mysqli_query($connection, "SELECT id, nama_wisata FROM wisata");
+
+  $permainan = mysqli_query($connection, "SELECT * FROM permainan where id = '$id'");
   $permainan =  mysqli_fetch_assoc($permainan);
 
   include('../layouts/header.php');
@@ -57,9 +58,14 @@
                             <label for="nama_wisata">Nama Wisata</label>
                             <select name="wisata_id" id="wisata_id" class="form-control">
                                 <option value="" selected disabled>===== Pilih Wisata =====</option>
-                                <?php if(!is_null($wisata)){ ?>
-                                <option value="<?= $wisata["id"] ?>" <?php if($permainan['wisata_id'] == $wisata['id']){ ?> selected <?php } ?>><?= $wisata["nama_wisata"] ?></option>
-                                <?php } ?>
+                                  <?php if(!is_null($wisata)){ 
+                                    foreach($wisata as $data){
+                                  ?>
+                                    <option value="<?= $data["id"] ?>" <?php if($permainan['wisata_id'] == $data['id']){ ?> selected <?php } ?>><?= $data["nama_wisata"] ?></option>
+                                  <?php 
+                                      }
+                                    }
+                                  ?>
                             </select>
                         </div>
                         <div class="form-group">

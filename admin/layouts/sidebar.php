@@ -4,11 +4,11 @@
     <?php 
       if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
     ?>
-    <img class="animation__shake" src="../../assets/server/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <!-- <img class="animation__shake" src="../../assets/server/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> -->
     <?php 
       }else{
     ?>
-    <img class="animation__shake" src="../assets/server/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <!-- <img class="animation__shake" src="../assets/server/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> -->
     <?php 
       }
     ?>
