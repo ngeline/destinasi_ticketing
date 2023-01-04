@@ -76,7 +76,6 @@
 <!-- Bootstrap 4 -->
 <script src="../assets/server/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/server/plugins/jquery-validation/jquery.validate.min.js"></script>
-<script src="../assets/server/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript">
 
 $(function () {

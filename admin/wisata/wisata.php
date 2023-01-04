@@ -8,7 +8,7 @@
   }
 
   $data = mysqli_query($connection, "SELECT *
-                        FROM pesanan 
+                        FROM wisata 
                       ");
 
   include('../layouts/header.php');

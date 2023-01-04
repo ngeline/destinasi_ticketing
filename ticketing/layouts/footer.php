@@ -16,8 +16,8 @@
                               </a>
                            </div>
                            <div class="col-md-12">
-                              <a href="destinasi.php">
-                                 <p class="text-light">Destinasi</p>
+                              <a href="wisata.php">
+                                 <p class="text-light">wisata</p>
                               </a>
                            </div>
                            <div class="col-md-12">

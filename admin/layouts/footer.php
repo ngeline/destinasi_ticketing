@@ -17,7 +17,7 @@
 <!-- ./wrapper -->
 
 <?php 
-    if(isset($_GET["pesanan"]) || isset($_GET["destinasi"])){
+    if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
   ?>
 <!-- jQuery -->
 <script src="../../assets/server/plugins/jquery/jquery.min.js"></script>
@@ -29,6 +29,7 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="../../assets/server/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/server/plugins/jquery-validation/jquery.validate.min.js"></script>
 <!-- ChartJS -->
 <script src="../../assets/server/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -75,6 +76,7 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="../assets/server/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/server/plugins/jquery-validation/jquery.validate.min.js"></script>
 <!-- ChartJS -->
 <script src="../assets/server/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->

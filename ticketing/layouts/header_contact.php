@@ -44,7 +44,7 @@
                                  <a class="nav-link" href="index.php">Home</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="destinasi.php">Destinasi</a>
+                                 <a class="nav-link" href="wisata.php">Wisata</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="contact.php">Kontak Kami</a>

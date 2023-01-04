@@ -6,7 +6,7 @@
   <title>AdminLTE 3 | Dashboard</title>
 
   <?php 
-    if(isset($_GET["pesanan"]) || isset($_GET["destinasi"])){
+    if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
   ?>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

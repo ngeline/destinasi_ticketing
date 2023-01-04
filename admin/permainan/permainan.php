@@ -7,9 +7,7 @@
     header("Location:".$base_url.'/admin/login.php');
   }
 
-  $data = mysqli_query($connection, "SELECT *
-                        FROM pesanan 
-                      ");
+  $data = mysqli_query($connection, "SELECT * FROM permainan");
 
   include('../layouts/header.php');
   include('../layouts/navbar.php');
@@ -23,12 +21,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Wisata</h1>
+            <h1 class="m-0">Permainan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="dashboard.php?dashboard">Home</a></li>
-              <li class="breadcrumb-item active">Wisata</li>
+              <li class="breadcrumb-item active">Permainan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,8 +41,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title float-left">Data Wisata</h3>
-                <a href="tambah-wisata.php?wisata" class="btn btn-sm btn-success float-right">Tambah Data</a>
+                <h3 class="card-title float-left">Data Permainan</h3>
+                <a href="tambah-permainan.php?permainan" class="btn btn-sm btn-success float-right">Tambah Data</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -52,8 +50,7 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Wisata</th>
-                      <th>Alamat</th>
+                      <th>Nama Permainan</th>
                       <th>Harga</th>
                       <th>Foto</th>
                       <th>Action</th>
@@ -66,19 +63,18 @@
                       ?>
                       <tr>
                         <td><?=$no++?></td>
-                        <td><?=$row["nama_wisata"]?></td>
-                        <td><?=$row["alamat"]?></td>
+                        <td><?=$row["nama_permainan"]?></td>
                         <td><?=$row["harga"]?></td>
                         <td>
-                          <?php if($row["file"] != null || !empty($row["file"])){?>
-                            <img src="<?=$base_url.'/assets/server/img/'.$row["file"]?>" alt="Foto Taman" width="100px">
+                          <?php if($row["foto"] != null || !empty($row["foto"])){?>
+                            <img src="<?=$base_url.'/assets/server/img/'.$row["foto"]?>" alt="Foto Taman" width="120px">
                           <?php }else { ?>
-                            <img src="https://kliknusae.com/img/404.jpg" alt="Foto Taman" width="100px">
+                            <img src="https://kliknusae.com/img/404.jpg" alt="Foto Taman" width="120px">
                           <?php } ?>
                         </td>
                         <td>
-                          <a href="<?= $base_url.'/admin/wisata/edit-wisata.php?wisata&id='.$row["id"] ?>" class="btn btn-sm btn-warning">Edit</a>
-                          <a href="<?= $base_url.'/controllers/Wisata/HapusWisata.php?id='.$row["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus wisata <?php echo $row['nama_wisata']; ?>?');">Delete</a>
+                          <a href="<?= $base_url.'/admin/permainan/edit-permainan.php?permainan&id='.$row["id"] ?>" class="btn btn-sm btn-warning">Edit</a>
+                          <a href="<?= $base_url.'/controllers/Permainan/HapusPermainan.php?id='.$row["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus permainan <?php echo $row['nama_permainan']; ?>?')">Delete</a>
                         </td>
                       </tr>
                     <?php }?>
@@ -88,7 +84,6 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Wisata</th>
-                      <th>Alamat</th>
                       <th>Harga</th>
                       <th>Foto</th>
                       <th>Action</th>

@@ -2,7 +2,7 @@
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <?php 
-      if(isset($_GET["pesanan"]) || isset($_GET["destinasi"])){
+      if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
     ?>
     <img class="animation__shake" src="../../assets/server/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     <?php 
@@ -21,7 +21,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <?php 
-        if(isset($_GET["pesanan"]) || isset($_GET["destinasi"])){
+        if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
       ?>
       <img src="../../assets/server/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <?php 
@@ -40,7 +40,7 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <?php 
-            if(isset($_GET["pesanan"]) || isset($_GET["destinasi"])){
+            if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
           ?>
           <img src="../../assets/server/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           <?php 
@@ -75,7 +75,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <?php 
-              if(isset($_GET["pesanan"]) || isset($_GET["destinasi"])){
+              if(isset($_GET["pesanan"]) || isset($_GET["wisata"])){
             ?>
             <a href="../dashboard.php?dashboard" class="nav-link <?php if (isset($_GET["dashboard"])){echo "active"; }?>">
             <?php 
@@ -93,31 +93,49 @@
           </li>
           <li class="nav-item menu-open">
             <?php 
-              if(isset($_GET["pesanan"]) || isset($_GET["destinasi"])){
+              if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
             ?>
-            <a href="../destinasi/destinasi.php?destinasi" class="nav-link <?php if (isset($_GET["destinasi"])){echo "active"; }?>">
+            <a href="../wisata/wisata.php?wisata" class="nav-link <?php if (isset($_GET["wisata"])){echo "active"; }?>">
             <?php 
               }else{
             ?>
-            <a href="destinasi/destinasi.php?destinasi" class="nav-link <?php if (isset($_GET["destinasi"])){echo "active"; }?>">
+            <a href="wisata/wisata.php?wisata" class="nav-link <?php if (isset($_GET["wisata"])){echo "active"; }?>">
             <?php
               }
             ?>
               <i class="nav-icon fas fa-map-marked"></i>
               <p>
-                Destinasi
+                Wisata
               </p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <?php 
-              if(isset($_GET["pesanan"]) || isset($_GET["destinasi"])){
+              if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
+            ?>
+            <a href="../permainan/permainan.php?permainan" class="nav-link <?php if (isset($_GET["permainan"])){echo "active"; }?>">
+            <?php 
+              }else{
+            ?>
+            <a href="permainan/permainan.php?permainan" class="nav-link <?php if (isset($_GET["permainan"])){echo "active"; }?>">
+            <?php
+              }
+            ?>
+              <i class="nav-icon fas fa-gamepad"></i>
+              <p>
+                Permainan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <?php 
+              if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
             ?>
             <a href="../pesanan/pesanan.php?pesanan" class="nav-link <?php if (isset($_GET["pesanan"])){echo "active"; }?>">
             <?php 
               }else{
             ?>
-            <a href="destinasi/destinasi.php?destinasi" class="nav-link <?php if (isset($_GET["destinasi"])){echo "active"; }?>">
+            <a href="wisata/wisata.php?wisata" class="nav-link <?php if (isset($_GET["wisata"])){echo "active"; }?>">
             <?php
               }
             ?>
