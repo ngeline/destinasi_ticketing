@@ -92,7 +92,7 @@
                           <select name="status_pesanan" id="status_pesanan" class="form-control">
                             <option value="" selected disabled> === Pilih Status Pesanan === </option>
                             <option value="1">Sudah Dibayar</option>
-                            <option value="0">Belum Dibaya</option>
+                            <option value="0">Belum Dibayar</option>
                           </select>
                         </div>
                     </div>
