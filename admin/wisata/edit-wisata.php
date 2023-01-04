@@ -86,6 +86,12 @@
                             <?php }else { ?>
                               <img src="https://kliknusae.com/img/404.jpg" alt="Foto Taman" width="300px" id="preview" class="mt-2">
                             <?php } ?>
+                            <?php
+                                if(isset($_SESSION['foto'])){
+                                    $error = $_SESSION['foto'];
+                                    echo '<div class="bg-danger text-center my-1 mx-1"><span class="text-uppercase text-white">'.$error.'</span></div>';
+                                }
+                            ?>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -127,12 +133,7 @@ $(function () {
       },
       hal_perhatian: {
         required: true
-      },
-      nama_file: {
-        required: true,
-        extension: "jpg,jpeg",
-        filesize: 5,
-      },
+      }
     },
     messages: {
       nama_wisata: {
@@ -153,11 +154,6 @@ $(function () {
       },
       hal_perhatian: {
         required: "Mohon isi hal perhatian!"
-      },
-      nama_file: {
-        required: "Mohon isi foto!",
-        extension: "File harus format PNG atau JPG atau JPEG!",
-        filesize: "Gambar harus kurang dari 5mb!"
       }
     },
     errorElement: 'span',
@@ -187,3 +183,9 @@ $("#nama_file").change(function() {
     readURL(this);
 });
 </script>
+
+
+<?php
+    unset($_SESSION["error"]);
+    unset($_SESSION["foto"]);
+?>

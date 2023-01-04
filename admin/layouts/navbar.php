@@ -22,9 +22,21 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">Setting</span>
           <div class="dropdown-divider"></div>
-          <a href="../controllers/Authentication/logout.php" class="dropdown-item">
-            <i class="fas fa-sign-out-alt mr-2"></i> Sign Out
-          </a>
+          <?php 
+            if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
+          ?>
+            <a href="../../controllers/Authentication/logout.php" class="dropdown-item">
+              <i class="fas fa-sign-out-alt mr-2"></i> Sign Out
+            </a>
+          <?php
+            }else{
+          ?>
+            <a href="../controllers/Authentication/logout.php" class="dropdown-item">
+              <i class="fas fa-sign-out-alt mr-2"></i> Sign Out
+            </a>
+          <?php
+            }
+          ?>
         </div>
       </li>
     </ul>

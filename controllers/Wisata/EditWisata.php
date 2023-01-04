@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once('../../setting/connection.php');
     function generateFileName(){
         $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789_";
@@ -18,44 +19,62 @@
         $hal_perhatian  = $_POST["hal_perhatian"];
         $nama_file      = $_FILES['nama_file']['name'];
 
+
+        if($nama_file != ''){
+            $ekstensi_diperbolehkan	= array('png','jpg', 'jpeg');
             $x = explode('.', $nama_file);
             $ekstensi = strtolower(end($x));
             $nama_file = generateFileName().'.'.$ekstensi;
             $file_tmp = $_FILES['nama_file']['tmp_name'];
             $movelocation = '../../assets/server/img/'.$nama_file;
+            if(in_array($ekstensi, $ekstensi_diperbolehkan) == true){
+                $file_gambar = mysqli_query($connection, "SELECT file FROM wisata WHERE id = '$id'");
+                $file_gambar = mysqli_fetch_assoc($file_gambar);
 
-            $file_gambar = mysqli_query($connection, "SELECT file FROM wisata WHERE id = '$id'");
-            $file_gambar = mysqli_fetch_assoc($file_gambar);
-
-            if($file_gambar["file"] != $nama_file){
-                $loc_img = '../../assets/server/img/'.$file_gambar["file"];
-                if(file_exists($loc_img)){
-                    unlink($loc_img);
+                if($file_gambar["file"] != $nama_file){
+                    $loc_img = '../../assets/server/img/'.$file_gambar["file"];
+                    if(file_exists($loc_img)){
+                        unlink($loc_img);
+                    }
                 }
+
+                $move = move_uploaded_file($file_tmp, $movelocation);
+
+                $query      = mysqli_query($connection, "UPDATE wisata SET 
+                    nama_wisata = '$nama_wisata',
+                    harga       = '$harga',
+                    alamat      = '$alamat',
+                    deskripsi   = '$deskripsi',
+                    fasilitas   = '$fasilitas',
+                    hal_perhatian = '$hal_perhatian',
+                    file        = '$nama_file'
+                    WHERE id = '$id'
+                ");
+            }else{
+                $_SESSION["foto"] = "Extensi foto hanya bisa png, jpg dan jpeg!";
+                $query = false;
             }
-
-            $move = move_uploaded_file($file_tmp, $movelocation);
-
+        }else{
             $query      = mysqli_query($connection, "UPDATE wisata SET 
                 nama_wisata = '$nama_wisata',
                 harga       = '$harga',
                 alamat      = '$alamat',
                 deskripsi   = '$deskripsi',
                 fasilitas   = '$fasilitas',
-                hal_perhatian = '$hal_perhatian',
-                file        = '$nama_file'
+                hal_perhatian = '$hal_perhatian'
                 WHERE id = '$id'
             ");
+        }
 
 
-            if($query){
-                header('location: '.$base_url.'/admin/wisata/wisata.php?wisata');
-                return false;
-            }else{
-                $_SESSION['error'] = "Something wrong in server!";
-                header('location: '.$base_url.'/admin/wisata/edit-wisata.php?wisata&id='.$id);
-                return false;
-            }
+        if($query){
+            header('location: '.$base_url.'/admin/wisata/wisata.php?wisata');
+            return false;
+        }else{
+            $_SESSION['error'] = "Something wrong in server!";
+            header('location: '.$base_url.'/admin/wisata/edit-wisata.php?wisata&id='.$id);
+            return false;
+        }
         
     }
 ?>
