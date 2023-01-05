@@ -1,3 +1,7 @@
+<?php 
+   session_start();
+   require('./setting/connection.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -32,5 +36,4 @@
    </head>
 <body class="main-layout inner_page">
 
-<?php include('loading.php') ?>
 <?php include('header_contact.php') ?>

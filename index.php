@@ -1,4 +1,8 @@
-<?php include('ticketing/layouts/header.php') ?>
+<?php 
+   include('ticketing/layouts/header.php');
+   
+   $wisata = mysqli_query($connection, "SELECT * FROM permainan LIMIT 4");
+?>
 <!-- top -->
       <div class="full_bg">
          <div class="slider_main">
@@ -7,11 +11,6 @@
                   <div class="col-md-12">
                      <!-- carousel code -->
                      <div id="carouselExampleIndicators" class="carousel slide">
-                        <ol class="carousel-indicators">
-                           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
                         <div class="carousel-inner">
                            <!-- first slide -->
                            <div class="carousel-item active">
@@ -19,40 +18,9 @@
                                  <div class="row">
                                     <div  class="col-md-10 offset-md-1">
                                        <div class="board">
-                                          <h1>Now start <br>Your traveling </h1>
+                                          <h1>Destinasi <br>Permainan Wisata </h1>
                                           <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed towhen looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
-                                          <a class="read_more" href="Javascript:void(0)">Read More</a>
-                                          <a class="read_more" href="Javascript:void(0)">Contact us</a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- second slide -->
-                           <div class="carousel-item">
-                              <div class="carousel-caption relative">
-                                 <div class="row">
-                                    <div  class="col-md-10 offset-md-1">
-                                       <div class="board">
-                                          <h1>Now start <br>Your traveling </h1>
-                                          <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed towhen looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
-                                          <a class="read_more" href="Javascript:void(0)">Read More</a>
-                                          <a class="read_more" href="Javascript:void(0)">Contact us</a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- third slide-->
-                           <div class="carousel-item">
-                              <div class="carousel-caption relative">
-                                 <div class="row">
-                                    <div  class="col-md-10 offset-md-1">
-                                       <div class="board">
-                                          <h1>Now start <br>Your traveling </h1>
-                                          <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed towhen looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
-                                          <a class="read_more" href="Javascript:void(0)">Read More</a>
-                                          <a class="read_more" href="Javascript:void(0)">Contact us</a>
+                                          <a href="permainan.php" class="read_more" href="Javascript:void(0)">Permainan Kami</a>
                                        </div>
                                     </div>
                                  </div>
@@ -60,13 +28,13 @@
                            </div>
                         </div>
                         <!-- controls -->
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="sr-only">Previous</span>
                         </a>
                         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only">Next</span> -->
                         </a>
                      </div>
                   </div>
@@ -75,257 +43,44 @@
          </div>
       </div>
       <!-- end banner -->
-      <!-- our_packages -->
-      <div class="our_packages">
-         <div class="container">
-            <div class="row d_flex">
-               <div class="col-md-12">
-                  <form id="table" class="table_form">
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="titlepage text_align_left ">
-                              <h3>Our Packages</h3>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <label>Select Your Destination :</label>
-                           <input class="contactus" placeholder="All Destinations" type="text" name="destinations"> 
-                        </div>
-                        <div class="col-md-4">
-                           <label>Select Your Destination :</label>
-                           <input type="text" class="contactus" id="my_date_picker" placeholder="mm-dd-yy" > 
-                        </div>
-                        <div class="col-md-4">
-                           <label>Select Your Destination :</label>
-                           <select id='seluser' class="contactus" >
-                              <option value='0'>$1090</option>
-                              <option value='1'>$1100</option>
-                              <option value='2'>$1160</option>
-                              <option value='3'>$1190</option>
-                           </select>
-                        </div>
-                        <div class="col-md-12">
-                           <button class="send_btn">Search</button>
-                        </div>
-                     </div>
-                  </form>
-               </div>
-               <div class="col-md-12">
-                  <div class="filter_main">
-                     <a class="read_more" href="javascript:void(0)"> <img src="assets/client/images/filter.png" alt="#"/> More Filters </a>
-                  </div>
-               </div>
-               <div class="col-md-8 offset-md-2">
-                  <div class="typologies">
-                     <div class="row">
-                        <div class="col-md-3">
-                           <div class="typolo">
-                              <span>typologies :</span>
-                              <form>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio" checked> <span class="label-text">Relax </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio"> <span class="label-text">Cultural </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio"> <span class="label-text">Sport </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio"> <span class="label-text">History </span>
-                                    </label>
-                                 </div>
-                              </form>
-                           </div>
-                        </div>
-                        <div class="col-md-3">
-                           <div class="typolo">
-                              <span>Durations :
-                              </span>
-                              <form>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio" checked> <span class="label-text"> 2 - 4 Days </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio"> <span class="label-text"> 2 - 3 Days </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                       <input type="radio" name="radio"> <span class="label-text"> 2 - 5 Days </span>
-                                       </label> 
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                       <input type="radio" name="radio"> <span class="label-text"> 2 - 6 Days </span>
-                                       </label>
-                                 </div>
-                              </form>
-                           </div>
-                        </div>
-                        <div class="col-md-3">
-                           <div class="typolo">
-                              <span>Difficulty :
-                              </span>
-                              <form>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio" checked> <span class="label-text">High  </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio"> <span class="label-text">Low  </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio"> <span class="label-text">Medium </span>
-                                    </label>
-                                 </div>
-                              </form>
-                           </div>
-                        </div>
-                        <div class="col-md-3">
-                           <div class="typolo">
-                              <span>Min Age :
-                              </span>
-                              <form>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio" checked> <span class="label-text"> 10 Years  </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio"> <span class="label-text"> 25 Years  </span>
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <label class="marg_bottom0">
-                                    <input type="radio" name="radio"> <span class="label-text"> 40 Years </span>
-                                    </label>
-                                 </div>
-                              </form>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end our_packages -->
       <!-- packages -->
-      <div class="packages">
+      <div class="packages" id="#permainan">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage text_align_center ">
-                     <h2>World Place Packages</h2>
+                     <h2>Dunia Permainan</h2>
                   </div>
                </div>
             </div>
             <div class="row">
+               <?php foreach($wisata as $data){  ?>
                <div class=" col-md-6">
                   <div id="ho_img" class="packages_box" data-aos="fade-right" >
-                     <figure><img src="assets/client/images/packag1.jpg" alt="#"/></figure>
+                     <figure><img src="<?= $base_url.'/assets/server/img/'.$data["foto"] ?>" alt="#"/></figure>
                      <div class="tuscany">
                         <div class="tusc text_align_left">
                            <div class="italy">
-                              <h3>Tuscany</h3>
-                              <span><img src="assets/client/images/loca.png" alt="#"/> Italy</span>
+                              <h3><?= $data["nama_permainan"] ?></h3>
+                              <span><img src="assets/client/images/loca.png" alt="#"/> Indonesia</span>
                            </div>
                            <div class="italy_right">
-                              <h3>Price</h3>
-                              <span>$1000.0</span>
+                              <h3>Harga</h3>
+                              <span>Rp <?= $data["harga"] ?> / orang</span>
                            </div>
                         </div>
-                        <p>Content here, content here', making it look like readable English. Many desktop publishing packagesContent here, content here', making it look like readable English. Many desktop publishing packages and web page editors now us</p>
+                        <p><?= $data["deskripsi"] ?></p>
                         <div class="tusc">
-                           <a class="read_more" href="Javascript:void(0)">Read More</a>
-                           <a class="read_more" href="Javascript:void(0)">Book Now</a>
+                           <?php if(isset($_SESSION["login"])){ ?>
+                              <a href="detail.php" class="read_more" href="Javascript:void(0)">Pesan</a>
+                           <?php }else{ ?>
+                              <a href="login.php" class="read_more" href="Javascript:void(0)">Pesan</a>
+                           <?php } ?>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class=" col-md-6">
-                  <div id="ho_img" class="packages_box" data-aos="fade-left">
-                     <figure><img src="assets/client/images/packag2.jpg" alt="#"/></figure>
-                     <div class="tuscany">
-                        <div class="tusc text_align_left">
-                           <div class="italy">
-                              <h3>Pais</h3>
-                              <span><img src="assets/client/images/loca.png" alt="#"/> Italy</span>
-                           </div>
-                           <div class="italy_right">
-                              <h3>Price</h3>
-                              <span>$1000.0</span>
-                           </div>
-                        </div>
-                        <p>Content here, content here', making it look like readable English. Many desktop publishing packagesContent here, content here', making it look like readable English. Many desktop publishing packages and web page editors now us</p>
-                        <div class="tusc">
-                           <a class="read_more" href="Javascript:void(0)">Read More</a>
-                           <a class="read_more" href="Javascript:void(0)">Book Now</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class=" col-md-6">
-                  <div id="ho_img" class="packages_box" data-aos="fade-right" >
-                     <figure><img src="assets/client/images/packag3.jpg" alt="#"/></figure>
-                     <div class="tuscany">
-                        <div class="tusc text_align_left">
-                           <div class="italy">
-                              <h3>San Francisco</h3>
-                              <span><img src="assets/client/images/loca.png" alt="#"/> United States
-                              </span>
-                           </div>
-                           <div class="italy_right">
-                              <h3>Price</h3>
-                              <span>$1000.0</span>
-                           </div>
-                        </div>
-                        <p>Content here, content here', making it look like readable English. Many desktop publishing packagesContent here, content here', making it look like readable English. Many desktop publishing packages and web page editors now us</p>
-                        <div class="tusc">
-                           <a class="read_more" href="Javascript:void(0)">Read More</a>
-                           <a class="read_more" href="Javascript:void(0)">Book Now</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class=" col-md-6">
-                  <div id="ho_img" class="packages_box" data-aos="fade-left">
-                     <figure><img src="assets/client/images/packag4.jpg" alt="#"/></figure>
-                     <div class="tuscany">
-                        <div class="tusc text_align_left">
-                           <div class="italy">
-                              <h3>Phuket</h3>
-                              <span><img src="assets/client/images/loca.png" alt="#"/> Thailandia</span>
-                           </div>
-                           <div class="italy_right">
-                              <h3>Price</h3>
-                              <span>$1000.0</span>
-                           </div>
-                        </div>
-                        <p>Content here, content here', making it look like readable English. Many desktop publishing packagesContent here, content here', making it look like readable English. Many desktop publishing packages and web page editors now us</p>
-                        <div class="tusc">
-                           <a class="read_more" href="Javascript:void(0)">Read More</a>
-                           <a class="read_more" href="Javascript:void(0)">Book Now</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+               <?php }  ?>
                <div class="col-md-12">
                   <a class="read_more" href="Javascript:void(0)">See More</a>
                </div>

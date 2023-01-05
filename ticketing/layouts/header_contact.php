@@ -9,8 +9,12 @@
                            <div class="niceCountryInputSelector se_flag" style="width: 200px;" data-selectedcountry="US" data-showspecial="false" data-showflags="true" data-i18nall="All selected"
                               data-i18nnofilter="No selection" data-i18nfilter="Filter" data-onchangecallback="onChangeCallback" />
                            </div>
-                           <span> <a href="javascript:void(0)">Sign Up</a> </span>
-                           <span class="ml-1"> or <a href="javascript:void(0)">Login</a> </span>   
+                           <?php if(isset($_SESSION["login"])){ ?>
+                              <span> <a href="<?= $base_url.'/controllers/Authentication/logout.php' ?>">Keluar</a> </span>
+                           <?php }else{ ?>
+                              <span> <a href="register.php">Daftar</a> </span>
+                              <span class="ml-1"> or <a href="login.php">Masuk</a> </span>   
+                           <?php } ?>
                         </div>
                         <ul class="top_infomation">
                            <li><img src="assets/client/images/ti_call.png" alt="#"/>Call : +6212 9283 0184</li>
@@ -44,7 +48,7 @@
                                  <a class="nav-link" href="index.php">Home</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="wisata.php">Wisata</a>
+                                 <a class="nav-link" href="permainan.php">Permainan</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="contact.php">Kontak Kami</a>
