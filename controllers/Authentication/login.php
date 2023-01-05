@@ -17,16 +17,16 @@
                 header('Location: '.$base_url.'/admin/dashboard.php?dashboard');
             }else if(!password_verify($password, $data["password"])){
                 $_SESSION['error']="Username atau Password Salah!"; 
-                header($base_url.'login.php');
+                header('Location: '.$base_url.'login.php');
                 return false;
             }else{
                 $_SESSION['error']="Akun tidak tersedia!"; 
-                header($base_url.'login.php');
+                header('Location: '.$base_url.'login.php');
                 return false;
             }
         }else{
             $_SESSION['error']="Akun tidak tersedia!"; 
-            header($base_url.'login.php');
+            header('Location: '.$base_url.'login.php');
             return false;
         }
     }

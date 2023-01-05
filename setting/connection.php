@@ -1,11 +1,12 @@
 <?php
     $host = "localhost";
-    $username = "roothost";
-    $password = "1234567890";
+    $username = "root";
+    $password = "";
     $database = "ticketing_app";
-    $port = 8888;
+    $port = 3306;
+    $urlPort = 81;
 
     $connection = mysqli_connect($host, $username, $password, $database, $port);
 
-    $base_url = "http://localhost:".$port."/ticketing_app";
+    $base_url = "http://localhost:".$urlPort."/destinasi_ticketing";
 ?>

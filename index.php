@@ -82,7 +82,7 @@
                </div>
                <?php }  ?>
                <div class="col-md-12">
-                  <a class="read_more" href="Javascript:void(0)">See More</a>
+                  <a class="read_more" href="permainan.php">See More</a>
                </div>
             </div>
          </div>

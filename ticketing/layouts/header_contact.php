@@ -50,9 +50,12 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="permainan.php">Permainan</a>
                               </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="contact.php">Kontak Kami</a>
-                              </li>
+                              <?php if(isset($_SESSION["login"])){ ?>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="pesanan.php">Kontak Kami</a>
+                                 </li>
+                              <?php }else{ ?>  
+                              <?php } ?>
                            </ul>
                         </div>
                      </nav>
