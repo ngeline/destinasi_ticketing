@@ -80,10 +80,12 @@
                           <?php if($row['status_admin'] == 0) {?>
                             <a href="<?= $base_url.'/controllers/Pesanan/ConfirmPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-success" onclick="return confirm('Anda yakin ingin konfirmasi pesanan <?php echo $row['name']; ?>?');">Konfirmasi Pesanan</a>
                           <?php }else{?>
+                            <button class="btn btn-sm btn-success">Terkonfirmasi Admin</button>
                           <?php }?>
                           <?php if($row['status_pesanan'] == 0) {?>
                           <a href="<?= $base_url.'/controllers/Pesanan/PembayaranPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-primary" onclick="return confirm('Anda yakin ingin konfirmasi pembayaran <?php echo $row['name']; ?>?');">Konfirmasi Pembayaran</a>
                           <?php }else{?>
+                            <button class="btn btn-sm btn-primary">Telah Dibayar</button>
                           <?php }?>
                         </td>
                       </tr>
