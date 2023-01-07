@@ -12,10 +12,11 @@
         $wisata_id = mysqli_fetch_assoc($wisata_id);
         $w_id = $wisata_id["id"];
         $harga = $wisata_id["harga"];
+        $date = date("Y-m-d H:i:s");
         
         $total_pembayaran = $harga * $jumlah_orang;
 
-        $query      = mysqli_query($connection, "INSERT INTO pesanan (user_id, wisata_id, permainan_id, total_pembayaran, jumlah_orang, tanggal_wisata, status_admin, status_pesanan) VALUES (
+        $query      = mysqli_query($connection, "INSERT INTO pesanan (user_id, wisata_id, permainan_id, total_pembayaran, jumlah_orang, tanggal_wisata, status_admin, status_pesanan, createdAt, updatedAt) VALUES (
             '$user_id',
             '$w_id',
             '$permainan_id',
@@ -23,7 +24,9 @@
             '$jumlah_orang',
             '$tanggal_wisata',
             '0',
-            '0'
+            '0',
+            '$date',
+            '$date'
         )");
 
         if($query){

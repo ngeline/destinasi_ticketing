@@ -1,7 +1,6 @@
 <?php 
   session_start();
   include('../../setting/connection.php');
-  include('../../controllers/Authentication/login.php');
   
   if (!isset($_SESSION['login']) || $_SESSION['level'] != "admin") {
     header("Location:".$base_url.'/admin/login.php');

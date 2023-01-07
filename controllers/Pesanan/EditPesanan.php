@@ -14,20 +14,15 @@
         $status_pesanan = $_POST["status_pesanan"];
         $password       = password_hash("pengunjung", PASSWORD_BCRYPT);
 
-        $user = mysqli_query($connection, "INSERT INTO users (level, name, username, password) VALUES (
-            'pengunjung',
-            '$nama',
-            '$nama',
-            '$password'
-        )");
-
         $getUser = mysqli_query($connection, "SELECT user_id FROM pesanan WHERE id='$id'");
         $getUser = mysqli_fetch_assoc($getUser);
         $getUser = $getUser["user_id"];
+        $date = date("Y-m-d H:i:s");
 
         $updUser = mysqli_query($connection, "UPDATE users SET 
                 name = '$nama',
-                username = '$username'
+                username = '$username',
+                updatedAt = '$date'
             WHERE id = '$getUser'
         ");
 

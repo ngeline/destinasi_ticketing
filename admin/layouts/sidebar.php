@@ -42,11 +42,11 @@
           <?php 
             if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
           ?>
-          <img src="../../assets/server/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../assets/server/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
           <?php 
             }else{
           ?>
-          <img src="../assets/server/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../assets/server/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
           <?php 
             }
           ?>

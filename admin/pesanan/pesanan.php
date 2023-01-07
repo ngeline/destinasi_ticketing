@@ -1,7 +1,6 @@
 <?php 
   session_start();
   include('../../setting/connection.php');
-  include('../../controllers/Authentication/login.php');
   
   if (!isset($_SESSION['login']) || $_SESSION['level'] != "admin") {
     header("Location:".$base_url.'/admin/login.php');
@@ -77,7 +76,15 @@
                         <td><?=$row["total_pembayaran"]?> <?php ($row["status_pesanan"] == 1 ) ? '<span class="bg-success mx-1 my-2">Sudah Dibayar</span>' : '<span class="bg-danger mx-1 my-2">Belum Dibayar</span>' ?></td>
                         <td>
                           <a href="<?= $base_url.'/admin/pesanan/edit-pesanan.php?pesanan&id='.$row["id"] ?>" class="btn btn-sm btn-warning">Edit</a>
-                          <a href="<?= $base_url.'/controllers/Pesanan/HapusPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus pesanan <?php echo $row['name']; ?>?');">Delete</a>
+                          <a href="<?= $base_url.'/controllers/Pesanan/HapusPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus pesanan <?php echo $row['name']; ?>?');">Hapus</a>
+                          <?php if($row['status_admin'] == 0) {?>
+                            <a href="<?= $base_url.'/controllers/Pesanan/ConfirmPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-success" onclick="return confirm('Anda yakin ingin konfirmasi pesanan <?php echo $row['name']; ?>?');">Konfirmasi Pesanan</a>
+                          <?php }else{?>
+                          <?php }?>
+                          <?php if($row['status_pesanan'] == 0) {?>
+                          <a href="<?= $base_url.'/controllers/Pesanan/PembayaranPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-primary" onclick="return confirm('Anda yakin ingin konfirmasi pembayaran <?php echo $row['name']; ?>?');">Konfirmasi Pembayaran</a>
+                          <?php }else{?>
+                          <?php }?>
                         </td>
                       </tr>
                     <?php }?>

@@ -1,10 +1,10 @@
 <?php
     $host = "localhost";
     $username = "root";
-    $password = "";
+    $password = "pejantantangguh";
     $database = "ticketing_app";
     $port = 3306;
-    $urlPort = 81;
+    $urlPort = 80;
 
     $connection = mysqli_connect($host, $username, $password, $database, $port);
 
