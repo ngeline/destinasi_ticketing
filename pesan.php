@@ -6,6 +6,20 @@
 
 <div class="packages" id="#permainan">
     <div class="container">
+        <div class="banner-vertical-center-work container d-flex justify-content-center align-items-center py-0 p-0">
+            <div class="banner-content col-lg-12 col-12 m-lg-auto text-center">
+                <h2 class="banner-body light-300 fw-bold">
+                Rencanakan kunjungan kamu dan keluarga ke Saloka sesuai tanggal dan jumlah orang di bawah ini.
+                </h2>
+                <h3 class="banner-body pb-2 light-300 fw-bold">
+                INFORMASI TICKETING:
+                </h3>
+                <p class="banner-body pb-2 light-300">
+                Anak dengan tinggi dibawah 90 CM bebas bayar tiket
+                </p>
+                <br>
+            </div>
+        </div>
         <div class="row">
             <div class=" col-md-4">
                 <div class="card">
