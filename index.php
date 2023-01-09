@@ -82,7 +82,7 @@
                </div>
                <?php }  ?>
                <div class="col-md-12">
-                  <a class="read_more" href="permainan.php">See More</a>
+                  <a class="read_more" href="pesan.php">Pesan Sekarang</a>
                </div>
             </div>
          </div>

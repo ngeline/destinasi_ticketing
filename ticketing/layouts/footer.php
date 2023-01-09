@@ -61,14 +61,30 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
-      <script src="assets/client/js/jquery.min.js"></script>
-      <script src="assets/client/js/bootstrap.bundle.min.js"></script>
-      <script src="assets/client/js/jquery-3.0.0.min.js"></script>
+      <!-- jQuery -->
+      <script src="assets/server/plugins/jquery/jquery.min.js"></script>
+      <!-- jQuery UI 1.11.4 -->
+      <script src="assets/server/plugins/jquery-ui/jquery-ui.min.js"></script>
+      <!-- Bootstrap 4 -->
+      <script src="assets/server/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="assets/client/js/jquery.nice-select.min.js"></script>
       <!-- sidebar -->
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script src="assets/client/js/bootstrap-datepicker.min.js"></script>
       <script src="assets/client/js/custom.js"></script>
       <script>  AOS.init();</script>
+      
+      <!-- Sparkline -->
+      <script src="assets/server/plugins/sparklines/sparkline.js"></script>
+      <!-- daterangepicker -->
+      <script src="assets/server/plugins/moment/moment.min.js"></script>
+      <script src="assets/server/plugins/daterangepicker/daterangepicker.js"></script>
+
+      <!-- Tempusdominus Bootstrap 4 -->
+      <script src="assets/server/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+      
+      <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+      <!-- <script src="assets/server/js/pages/dashboard.js"></script> -->
    </body>
 </html>

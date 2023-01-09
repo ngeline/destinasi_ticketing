@@ -30,6 +30,12 @@
       <link rel="stylesheet" href="assets/client/css/nice-select.css">
       <link rel="stylesheet" href="assets/client/css/bootstrap-datepicker.min.css">
       <link rel="stylesheet" href="assets/client/css/niceCountryInput.css">
+      <!-- Tempusdominus Bootstrap 4 -->
+      <link rel="stylesheet" href="assets/server/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+      <!-- iCheck -->
+      <link rel="stylesheet" href="assets/server/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+      <!-- Daterange picker -->
+      <link rel="stylesheet" href="assets/server/plugins/daterangepicker/daterangepicker.css">
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
