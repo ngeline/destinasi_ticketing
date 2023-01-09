@@ -57,7 +57,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 pt-5 mx-auto">
-                                        <p>Rp 150.000</p>
+                                        <!-- -- -->
+                                        <p>Rp <span id="price-tiket"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -67,13 +68,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <p>arrival date</p>
-                                <h4 id="date-arrival">Senin, 06 Desember 2023</h4>
+                                <h4 id="date-arrival"></h4>
                             </div>
                             <div class="col-md-3">
-                                <p>Rp 120.000</p>
+                                <!-- -- -->
+                                <p>Rp <span id="total-price"></span></p>
                             </div>
                             <div class="col-md-3">
-                                <button class="btn btn-success">CHECKOUT</button>
+                                <?php if(isset($_SESSION["login"])){ ?>
+                                    <button type="submit" class="btn btn-success">CHECKOUT</button>
+                                <?php }else{ ?>
+                                    <a href="login.php" class="btn btn-success">CHECKOUT</a>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="row mt-2 float-right">
@@ -92,9 +98,34 @@
 
 <?php include('ticketing/layouts/footer.php') ?>
 <script>
-    $('#calendar').datetimepicker({
-        format: 'L',
-        inline: true
+    // $('#calendar').datetimepicker({
+    //     format: 'L',
+    //     inline: true
+    // });
+
+    // --
+    $('#calendar').datepicker({
+        format: 'YY-M-D',
+        todayHighlight: true,
+    }).on('changeDate', function() {
+        let getDate = $(this).datepicker('getDate');
+        let splitDate = getDate.toString().split(" ");
+        let valueCurrent = $(".input-number").val();
+
+        if (splitDate[0] === "Sun" || splitDate[0] === "Sat") {
+            let price = 150000;
+            let totalPrice = price * valueCurrent;
+
+            $("#price-tiket").text(price);
+            $("#total-price").text(totalPrice);
+        } else {
+            let price = 120000;
+            let totalPrice = price * valueCurrent;
+
+            $("#price-tiket").text(price);
+            $("#total-price").text(totalPrice);
+        }
+        $("#date-arrival").text(splitDate[0]+", "+splitDate[1]+" "+splitDate[2]+" "+splitDate[3]);
     });
 
     $('.btn-number').click(function(e){
@@ -104,31 +135,45 @@
         type      = $(this).attr('data-type');
         var input = $("input[name='"+fieldName+"']");
         var currentVal = parseInt(input.val());
-            if (!isNaN(currentVal)) {
-                if(type == 'minus') {
+        
+        // --
+        let getPrice = $("#price-tiket").text();        
+        let getTotalPrice = $("#total-price").text();
+
+        if (!isNaN(currentVal)) {
+            if(type == 'minus') {
+                
+                if(currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
                     
-                    if(currentVal > input.attr('min')) {
-                        input.val(currentVal - 1).change();
-                    } 
-                    if(parseInt(input.val()) == input.attr('min')) {
-                        $(this).attr('disabled', true);
-                    }
-
-                } else if(type == 'plus') {
-
-                    if(currentVal < input.attr('max')) {
-                        input.val(currentVal + 1).change();
-                    }
-                    if(parseInt(input.val()) == input.attr('max')) {
-                        $(this).attr('disabled', true);
-                    }
-
+                    // --
+                    let totalPrice = parseInt(getTotalPrice) - parseInt(getPrice);
+                    $("#total-price").text(totalPrice);
+                } 
+                if(parseInt(input.val()) == input.attr('min')) {
+                    $(this).attr('disabled', true);
                 }
-            } else {
-                input.val(0);
+
+            } else if(type == 'plus') {
+
+                if(currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+
+                    // --
+                    let totalPrice = parseInt(getPrice) + parseInt(getTotalPrice);
+                    $("#total-price").text(totalPrice);
+                }
+                if(parseInt(input.val()) == input.attr('max')) {
+                    $(this).attr('disabled', true);
+                }
+                
             }
-        });
-        $('.input-number').focusin(function(){
+            
+        } else {
+            input.val(0);
+        }
+    });
+    $('.input-number').focusin(function(){
         $(this).data('oldValue', $(this).val());
     });
     $('.input-number').change(function() {
@@ -136,16 +181,28 @@
         minValue =  parseInt($(this).attr('min'));
         maxValue =  parseInt($(this).attr('max'));
         valueCurrent = parseInt($(this).val());
+
+        // --
+        let getPrice = $("#price-tiket").text();        
+        // let getTotalPrice = $("#total-price").text();
         
         name = $(this).attr('name');
         if(valueCurrent >= minValue) {
             $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+
+            // --
+            let totalPrice = parseInt(getPrice) * valueCurrent;
+            $("#total-price").text(totalPrice);
         } else {
             alert('Sorry, the minimum value was reached');
             $(this).val($(this).data('oldValue'));
         }
         if(valueCurrent <= maxValue) {
             $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+
+            // --
+            let totalPrice = parseInt(getPrice) * valueCurrent;
+            $("#total-price").text(totalPrice);
         } else {
             alert('Sorry, the maximum value was reached');
             $(this).val($(this).data('oldValue'));
