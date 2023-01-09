@@ -18,9 +18,9 @@
                                  <div class="row">
                                     <div  class="col-md-10 offset-md-1">
                                        <div class="board">
-                                          <h1>Destinasi <br>Permainan Wisata </h1>
-                                          <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed towhen looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
-                                          <a href="permainan.php" class="read_more" href="Javascript:void(0)">Permainan Kami</a>
+                                          <h1>SALOKA THEME PARK</h1>
+                                          <p>SALOKA hadir sebagai taman rekreasi terbesar di Tengah Jawa yang masuk dalam daftar destinasi wisata Pesona Indonesia, serta mengusung konsep kearifan lokal berdasarkan legenda rakyat Baru Klinthing. Yuk, rasakan petualanganmu sekarang!</p>
+                                          <a href="permainan.php" class="read_more" href="Javascript:void(0)">Beli Tiket</a>
                                        </div>
                                     </div>
                                  </div>

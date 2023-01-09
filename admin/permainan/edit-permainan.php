@@ -76,6 +76,10 @@
                             <input type="number" name="harga" class="form-control" id="harga" placeholder="Harga" value="<?= $permainan['harga'] ?>">
                         </div>
                         <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"><?= $permainan['deskripsi'] ?></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="nama_file">Foto</label>
                             <input type="file" class="form-control" name="nama_file" id="nama_file" placeholder="Gambar">
                             <?php if($permainan["foto"] != null || !empty($permainan["foto"])){?>

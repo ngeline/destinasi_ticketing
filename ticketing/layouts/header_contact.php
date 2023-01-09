@@ -17,8 +17,8 @@
                            <?php } ?>
                         </div>
                         <ul class="top_infomation">
-                           <li><img src="assets/client/images/ti_call.png" alt="#"/>Call : +6212 9283 0184</li>
-                           <li><img src="assets/client/images/ti_mail.png" alt="#"/><a href="Javascript:void(0)"> durianruntuh@kab_upin.com</a></li>
+                           <li><img src="assets/client/images/ti_call.png" alt="#"/>Call : (0298) 322266</li>
+                           <li><img src="assets/client/images/ti_mail.png" alt="#"/><a href="Javascript:void(0)"> marketing@salokapark.com</a></li>
                         </ul>
                      </div>
                   </div>

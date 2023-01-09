@@ -15,6 +15,7 @@
         $harga          = $_POST["harga"];
         $nama_permainan = $_POST["nama_permainan"];
         $nama_file      = $_FILES['nama_file']['name'];
+        $deskripsi  = $_POST["deskripsi"];
 
         if(!empty($nama_file)){
             $ekstensi_diperbolehkan	= array('png','jpg', 'jpeg');
@@ -40,7 +41,8 @@
                     wisata_id       = '$wisata_id',
                     nama_permainan  = '$nama_permainan',
                     foto            = '$nama_file',
-                    harga           = '$harga'
+                    harga           = '$harga',
+                    deskripsi       = '$deskripsi',
                     WHERE id = '$id'
                 ");
             }else{
@@ -51,7 +53,8 @@
             $query      = mysqli_query($connection, "UPDATE permainan SET 
                 wisata_id       = '$wisata_id',
                 nama_permainan  = '$nama_permainan',
-                harga           = '$harga'
+                harga           = '$harga',
+                deskripsi       = '$deskripsi'
                 WHERE id = '$id'
             ");
         }

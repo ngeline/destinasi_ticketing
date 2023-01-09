@@ -29,10 +29,10 @@
                   </div>
                   <div class="col-md-4 ">
                      <ul class="conta">
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Kediri 
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Jl. Fatmawati No.154, Tuntang, Semarang, Jawa Tengah 50773 
                         </li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>+6212 9283 0184</li>
-                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> durianruntuh@kab_upin.com</a></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>(0298) 322266</li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> marketing@salokapark.com</a></li>
                      </ul>
                   </div>
                   <div class="col-md-3">

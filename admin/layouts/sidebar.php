@@ -75,7 +75,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <?php 
-              if(isset($_GET["pesanan"]) || isset($_GET["wisata"])){
+              if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
             ?>
             <a href="../dashboard.php?dashboard" class="nav-link <?php if (isset($_GET["dashboard"])){echo "active"; }?>">
             <?php 

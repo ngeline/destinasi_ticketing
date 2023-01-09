@@ -12,6 +12,7 @@
         $wisata_id      = $_POST["wisata_id"];
         $harga          = $_POST["harga"];
         $nama_permainan = $_POST["nama_permainan"];
+        $deskripsi = $_POST["deskripsi"];
         $nama_file      = $_FILES['nama_file']['name'];
 
         
@@ -23,11 +24,12 @@
         $move = move_uploaded_file($file_tmp, $movelocation);
 
 
-        $query      = mysqli_query($connection, "INSERT INTO permainan (wisata_id, nama_permainan, foto, harga) VALUES (
+        $query      = mysqli_query($connection, "INSERT INTO permainan (wisata_id, nama_permainan, foto, harga, deskripsi) VALUES (
             '$wisata_id',
             '$nama_permainan',
             '$nama_file',
-            '$harga'
+            '$harga',
+            '$deskripsi'
         )");
 
         if($query){

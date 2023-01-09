@@ -71,6 +71,10 @@
                             <input type="number" name="harga" class="form-control" id="harga" placeholder="Harga">
                         </div>
                         <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="nama_file">Foto</label>
                             <input type="file" class="form-control" name="nama_file" id="nama_file" placeholder="Gambar">
                             <img src="" alt="Foto Taman" width="300px" id="preview" class="mt-2">

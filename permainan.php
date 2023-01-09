@@ -1,7 +1,7 @@
 <?php 
    include('ticketing/layouts/header.php');
    
-   $wisata = mysqli_query($connection, "SELECT * FROM permainan LIMIT 4");
+   $wisata = mysqli_query($connection, "SELECT * FROM permainan");
 ?>
       <!-- packages -->
       <div class="packages" id="#permainan">
