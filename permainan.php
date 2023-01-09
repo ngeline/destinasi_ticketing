@@ -24,19 +24,8 @@
                               <h3><?= $data["nama_permainan"] ?></h3>
                               <span><img src="assets/client/images/loca.png" alt="#"/> Indonesia</span>
                            </div>
-                           <div class="italy_right">
-                              <h3>Harga</h3>
-                              <span>Rp <?= $data["harga"] ?> / orang</span>
-                           </div>
                         </div>
                         <p><?= $data["deskripsi"] ?></p>
-                        <div class="tusc">
-                           <?php if(isset($_SESSION["login"])){ ?>
-                              <a href="detail.php?id=<?= $data["id"] ?>" class="read_more" href="Javascript:void(0)">Pesan</a>
-                           <?php }else{ ?>
-                              <a href="login.php" class="read_more" href="Javascript:void(0)">Pesan</a>
-                           <?php } ?>
-                        </div>
                      </div>
                   </div>
                </div>
