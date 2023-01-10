@@ -4,11 +4,11 @@
     <?php 
       if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
     ?>
-    <img class="animation__shake" src="../../assets/server/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="../../assets/client/images/logo.png" alt="AdminLTELogo" height="60" width="160">
     <?php 
       }else{
     ?>
-    <img class="animation__shake" src="../assets/server/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="../assets/client/images/logo.png" alt="AdminLTELogo" height="60" width="160">
     <?php 
       }
     ?>
@@ -23,11 +23,11 @@
       <?php 
         if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
       ?>
-      <img src="../../assets/server/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../../assets/client/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <?php 
         }else{
       ?>
-      <img src="../assets/server/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../assets/client/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <?php 
         }
       ?>
@@ -52,7 +52,7 @@
           ?>
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Admin</a>
         </div>
       </div>
 

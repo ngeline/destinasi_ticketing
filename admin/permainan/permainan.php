@@ -50,7 +50,6 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Permainan</th>
-                      <th>Harga</th>
                       <th>Foto</th>
                       <th>Action</th>
                     </tr>
@@ -63,7 +62,6 @@
                       <tr>
                         <td><?=$no++?></td>
                         <td><?=$row["nama_permainan"]?></td>
-                        <td><?=$row["harga"]?></td>
                         <td>
                           <?php if($row["foto"] != null || !empty($row["foto"])){?>
                             <img src="<?=$base_url.'/assets/server/img/'.$row["foto"]?>" alt="Foto Taman" width="120px">
@@ -83,7 +81,6 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Wisata</th>
-                      <th>Harga</th>
                       <th>Foto</th>
                       <th>Action</th>
                     </tr>
