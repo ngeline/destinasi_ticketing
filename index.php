@@ -20,7 +20,7 @@
                                        <div class="board">
                                           <h1>SALOKA THEME PARK</h1>
                                           <p>SALOKA hadir sebagai taman rekreasi terbesar di Tengah Jawa yang masuk dalam daftar destinasi wisata Pesona Indonesia, serta mengusung konsep kearifan lokal berdasarkan legenda rakyat Baru Klinthing. Yuk, rasakan petualanganmu sekarang!</p>
-                                          <a href="permainan.php" class="read_more" href="Javascript:void(0)">LIHAT PERMAINAN</a>
+                                          <a href="pesan.php" class="read_more" href="Javascript:void(0)">PESAN TIKET</a>
                                        </div>
                                     </div>
                                  </div>

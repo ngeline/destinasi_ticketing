@@ -1,4 +1,5 @@
 <?php
+    // ini dugunakan untuk menyambungkan app dengan database
     require_once('../setting/connection.php');
     if(isset($_POST["login"])){
         $username = htmlspecialchars($_POST["username"]);

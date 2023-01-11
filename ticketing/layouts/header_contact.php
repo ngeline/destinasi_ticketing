@@ -9,12 +9,6 @@
                            <div class="niceCountryInputSelector se_flag" style="width: 200px;" data-selectedcountry="US" data-showspecial="false" data-showflags="true" data-i18nall="All selected"
                               data-i18nnofilter="No selection" data-i18nfilter="Filter" data-onchangecallback="onChangeCallback" />
                            </div>
-                           <?php if(isset($_SESSION["login"])){ ?>
-                              <span> <a href="<?= $base_url.'/controllers/Authentication/logout.php' ?>">Keluar</a> </span>
-                           <?php }else{ ?>
-                              <span> <a href="register.php">Daftar</a> </span>
-                              <span class="ml-1"> or <a href="login.php">Masuk</a> </span>   
-                           <?php } ?>
                         </div>
                         <ul class="top_infomation">
                            <li><img src="assets/client/images/ti_call.png" alt="#"/>Call : (0298) 322266</li>
@@ -48,11 +42,11 @@
                                  <a class="nav-link" href="index.php">Home</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="permainan.php">Permainan</a>
+                                 <a class="nav-link" href="pesan.php">Pesan Tiket</a>
                               </li>
                               <?php if(isset($_SESSION["login"])){ ?>
                                  <li class="nav-item">
-                                    <a class="nav-link" href="pesanan.php">Kontak Kami</a>
+                                    <a class="nav-link" href="pesanan.php">Informasi Tiket</a>
                                  </li>
                               <?php }else{ ?>  
                               <?php } ?>
@@ -62,8 +56,16 @@
                   </div>
                   <div class="col-md-2  d_none">
                      <ul class="email text_align_right">
-                        <li><a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                        <li><a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i>   </a></li>
+                        <!-- <li><a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a></li> -->
+                        <?php if(isset($_SESSION["login"])){ ?>
+                              <span> <a class="text-white fa fa-user" href="<?= $base_url.'/controllers/Authentication/logout.php' ?>"> Keluar</a></span>
+                           <?php }else{ ?>
+                              
+                              <span> 
+                              <span class="ml-1"><a href="login.php" class="text-white"> Masuk</a> atau <a class="text-white" href="register.php"> Daftar</a></span> </span>   
+                           <?php } ?>
+                        
+                        <!-- <li><a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i>   </a></li> -->
                      </ul>
                   </div>
                </div>
