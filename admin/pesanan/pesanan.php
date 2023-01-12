@@ -6,11 +6,10 @@
     header("Location:".$base_url.'/admin/login.php');
   }
 
-  $data = mysqli_query($connection, "SELECT ps.*, u.name, w.nama_wisata, p.nama_permainan
-                        FROM pesanan ps, users u, wisata w, permainan p
+  $data = mysqli_query($connection, "SELECT ps.*, u.name, w.nama_wisata
+                        FROM pesanan ps, users u, wisata w
                         WHERE ps.user_id = u.id
                         AND ps.wisata_id = w.id
-                        AND ps.permainan_id = p.id
                       ");
 
   include('../layouts/header.php');
@@ -56,7 +55,6 @@
                       <th>No</th>
                       <th>Nama Pengunjung</th>
                       <th>Wisata</th>
-                      <th>Permainan</th>
                       <th>Jumlah Orang</th>
                       <th>Total Pembayaran | Status Pembayaran</th>
                       <th>Action</th>
@@ -71,22 +69,25 @@
                         <td><?=$no++?></td>
                         <td><?=$row["name"]?></td>
                         <td><?=$row["nama_wisata"]?></td>
-                        <td><?=$row["nama_permainan"]?></td>
                         <td><?=$row["jumlah_orang"]?></td>
                         <td><?=$row["total_pembayaran"]?> <?php ($row["status_pesanan"] == 1 ) ? '<span class="bg-success mx-1 my-2">Sudah Dibayar</span>' : '<span class="bg-danger mx-1 my-2">Belum Dibayar</span>' ?></td>
                         <td>
-                          <a href="<?= $base_url.'/admin/pesanan/edit-pesanan.php?pesanan&id='.$row["id"] ?>" class="btn btn-sm btn-warning">Edit</a>
-                          <a href="<?= $base_url.'/controllers/Pesanan/HapusPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus pesanan <?php echo $row['name']; ?>?');">Hapus</a>
-                          <?php if($row['status_admin'] == 0) {?>
+                        <?php if($row['status_pesanan'] != 2){ ?>
+                            <a href="<?= $base_url.'/admin/pesanan/edit-pesanan.php?pesanan&id='.$row["id"] ?>" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="<?= $base_url.'/controllers/Pesanan/HapusPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus pesanan <?php echo $row['name']; ?>?');">Hapus</a>
+                          <?php if ($row['status_admin'] == 0) {?>
                             <a href="<?= $base_url.'/controllers/Pesanan/ConfirmPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-success" onclick="return confirm('Anda yakin ingin konfirmasi pesanan <?php echo $row['name']; ?>?');">Konfirmasi Pesanan</a>
-                          <?php }else{?>
+                          <?php } else {?>
                             <button class="btn btn-sm btn-success">Terkonfirmasi Admin</button>
                           <?php }?>
-                          <?php if($row['status_pesanan'] == 0) {?>
-                          <a href="<?= $base_url.'/controllers/Pesanan/PembayaranPesanan.php?id='.$row["id"] ?>" class="btn btn-sm btn-primary" onclick="return confirm('Anda yakin ingin konfirmasi pembayaran <?php echo $row['name']; ?>?');">Konfirmasi Pembayaran</a>
-                          <?php }else{?>
+                          <?php if ($row['status_pesanan'] == 0) {?>
+                            <a href="<?= $base_url.'/controllers/Pesanan/ConfirmPembayaran.php?id='.$row["id"] ?>" class="btn btn-sm btn-primary" onclick="return confirm('Anda yakin ingin konfirmasi pembayaran <?php echo $row['name']; ?>?');">Konfirmasi Pembayaran</a>
+                          <?php } else {?>
                             <button class="btn btn-sm btn-primary">Telah Dibayar</button>
                           <?php }?>
+                        <?php }else{?>
+                            <button class="btn btn-danger">PESANAN DIBATALKAN</button>
+                        <?php }?>
                         </td>
                       </tr>
                     <?php }?>

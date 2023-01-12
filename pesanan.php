@@ -1,7 +1,7 @@
 <?php 
     include('ticketing/layouts/header.php');
     $user_id = $_SESSION['login']['id'];
-    $pesanan = mysqli_query($connection, "SELECT ps.*, p.nama_permainan, p.foto from pesanan ps, permainan p where user_id = '$user_id' AND p.id = ps.permainan_id");
+    $pesanan = mysqli_query($connection, "SELECT ps.*, w.nama_wisata from pesanan ps, wisata w where user_id = '$user_id' AND w.id = ps.wisata_id");
 ?>
 <div class="packages">
     <div class="container">
@@ -13,26 +13,39 @@
             </div>
             
         </div>
-        <?php foreach($pesanan as $data) { ?>
-            <div class="row">
+        <div class="row">
+            <?php foreach($pesanan as $data) { ?>
                 <div class="col-md-6">
-                    <figure><img src="<?= $base_url.'/assets/server/img/'.$data["foto"] ?>" alt="#"/></figure>
-                    <div class="tuscany text_align_center">
-                        <div class="tusc text_align_center">
+                    <figure><img src="https://i.pinimg.com/originals/07/bf/9b/07bf9bd57e28d154a9c3df0178b3befe.jpg" alt="#" width="80%" /></figure>
+                    <div class="tuscany">
+                        <div class="tusc text_align_left">
                             <div class="italy">
-                                <h3><?= $data["nama_permainan"] ?></h3>
-                            </div>
-                            <div class="italy_right">
-                                <h3>Harga</h3>
-                                <span>Rp <?= $data["total_pembayaran"] ?> / <?= $data["jumlah_orang"] ?> orang</span>
+                                <h3><?= $data["nama_wisata"] ?></h3>
+                                <h3>Harga <span>Rp <?= $data["total_pembayaran"] ?> / <?= $data["jumlah_orang"] ?> orang</span></h3>
                             </div>
                         </div>
-                        <p> Status Admin:  <?= ($data["status_admin"] == 0) ? 'Belum Dikonfirmasi' : 'Terkonfirmasi, silahkan datang dan segera membayar ditempat' ?></p>
-                        <p> Status Pesanan: <?= ($data["status_pesanan"] == 0) ? 'Belum Dibayar' : 'Selesai' ?> </p>
+                        <?php if($data['status_pesanan'] != 2){ ?>
+                            <p> Status Admin:  <?= ($data["status_admin"] == 0) ? 'Belum Dikonfirmasi' : 'Terkonfirmasi, silahkan datang dan segera membayar ditempat' ?></p>
+                            <p> Status Pesanan: <?= ($data["status_pesanan"] == 0) ? 'Belum Dibayar' : 'Selesai' ?> </p>
+                        <?php }else{ ?>
+                            <p> Status Admin:  <span class="text-danger">Pesanan Dibatalkan</span></p>
+                            <p> Status Pesanan: <span class="text-danger">Pesanan Dibatalkan</span></p>
+                        <?php } ?>
+                    </div>
+                    <div class="tuscany">
+                        <?php if($data['status_pesanan'] != 2){ ?>
+                            <?php if($data['status_pesanan'] == 0){ ?>
+                                <a href="<?= $base_url.'/controllers/Pesanan/BatalPesanan.php?id='.$data["id"] ?>" class="btn btn-primary" onclick="return confirm('Anda yakin ingin membatalkan pesanan Anda di <?php echo $data['nama_wisata']; ?>?');">Batalkan Pesanan</a>
+                            <?php }else{ ?>
+                                <button class="btn btn-success text-bold">PESANAN TERKONFIRMASI</button>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <button class="btn btn-danger text-bold">PESANAN DIBATALKAN</button>
+                        <?php } ?>
                     </div>
                 </div>
-            </div>
-        <?php }?>
+            <?php }?>
+        </div>
     </div>
 </div>
 <?php include('ticketing/layouts/footer.php') ?>

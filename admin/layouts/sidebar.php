@@ -91,7 +91,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
+          <!-- <li class="nav-item menu-open">
             <?php 
               if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){
             ?>
@@ -126,7 +126,7 @@
                 Permainan
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item menu-open">
             <?php 
               if(isset($_GET["pesanan"]) || isset($_GET["wisata"]) || isset($_GET["permainan"])){

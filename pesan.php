@@ -20,6 +20,16 @@
                 <br>
             </div>
         </div>
+        <?php
+                if(isset($_SESSION["error"])){
+                    $error = $_SESSION["error"];
+                    echo '<div class="banner-vertical-center-work container d-flex justify-content-center align-items-center py-0 p-0"><div class="banner-content col-lg-12 col-12 m-lg-auto text-center text-danger">'.$error.'</span></div></div>';
+                }
+                if(isset($_SESSION["success"])){
+                    $success = $_SESSION["success"];
+                    echo '<div class="banner-vertical-center-work container d-flex justify-content-center align-items-center py-0 p-0"><div class="banner-content col-lg-12 col-12 m-lg-auto text-center text-success">'.$success.'</span></div></div>';
+                }
+        ?>
         <div class="row">
             <div class=" col-md-4">
                 <div class="card">
@@ -44,66 +54,72 @@
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header bg-white">
-                        <h2 class="text-bold text-center">Ticket Types</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="card card-white justify-content-center mx-5">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h3>Regular Weekend Ticket</h3>
-                                        <p style="font-size: 12px;">Tiket terusan weekend saloka theme park. Bebas menaiki semua wahana</p>
-                                    </div>
-                                    <div class="col-md-4 justify-content-center pt-5">
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                                                    <span class="fa fa-minus"></span>
-                                                </button>
-                                            </span>
-                                            <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100" >
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                                                    <span class="fa fa-plus"></span>
-                                                </button>
-                                            </span>
+                    <form action="<?= $base_url.'/controllers/Pesanan/BuatPesanan.php' ?>" method="POST" enctype="multipart/form-data">
+                        <div class="card-header bg-white">
+                            <h2 class="text-bold text-center">Ticket Types</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="card card-white justify-content-center mx-5">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h3>Regular Weekend Ticket</h3>
+                                            <p style="font-size: 12px;">Tiket terusan weekend saloka theme park. Bebas menaiki semua wahana</p>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 pt-5 mx-auto">
-                                        <!-- -- -->
-                                        <p>Rp <span id="price-tiket"></span></p>
+                                        <div class="col-md-4 justify-content-center pt-5">
+                                            <p class="text-center">Total Pengunjung</p>
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
+                                                        <span class="fa fa-minus"></span>
+                                                    </button>
+                                                </span>
+                                                <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100" >
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+                                                        <span class="fa fa-plus"></span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pt-5 mx-auto">
+                                            <!-- -- -->
+                                            <p>Rp <span id="price-tiket"></span></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body ml-5 mr-5">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>arrival date</p>
-                                <h4 id="date-arrival"></h4>
+                        <div class="card-body ml-5 mr-5">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>arrival date</p>
+                                    <h4 id="date-arrival"></h4>
+                                    <input type="text" name="user_id" value="<?= $_SESSION["login"]["id"] ?>" hidden>
+                                    <input type="text" name="tanggal_wisata" id="tanggal_wisata" hidden>
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- -- -->
+                                    <p>Rp <span id="total-price"></span></p>
+                                    <input type="text" name="total_pembayaran" id="total_pembayaran" hidden>
+                                </div>
+                                <div class="col-md-3">
+                                    <?php if(isset($_SESSION["login"])){ ?>
+                                        <button type="submit" class="btn btn-success" name="pesan">CHECKOUT</button>
+                                    <?php }else{ ?>
+                                        <a href="login.php" class="btn btn-success">CHECKOUT</a>
+                                    <?php } ?>
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <!-- -- -->
-                                <p>Rp <span id="total-price"></span></p>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="row mt-2 float-right">
                                 <?php if(isset($_SESSION["login"])){ ?>
-                                    <button type="submit" class="btn btn-success">CHECKOUT</button>
-                                <?php }else{ ?>
-                                    <a href="login.php" class="btn btn-success">CHECKOUT</a>
-                                <?php } ?>
+                                    <p>*telah melakukan reservasi? cek status reservasi <a href="pesanan.php">Di sini</a></p>
+                               <?php }else{ ?>
+                                    <p>*telah melakukan reservasi? cek status reservasi <a href="login.php">Di sini</a></p>
+                               <?php } ?>
                             </div>
                         </div>
-                        <div class="row mt-2 float-right">
-                            <?php if(isset($_SESSION["login"])){ ?>
-                                <p>*telah melakukan reservasi? cek status reservasi <a href="pesanan.php">Di sini</a></p>
-                           <?php }else{ ?>
-                                <p>*telah melakukan reservasi? cek status reservasi <a href="login.php">Di sini</a></p>
-                           <?php } ?>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -112,12 +128,6 @@
 
 <?php include('ticketing/layouts/footer.php') ?>
 <script>
-    // $('#calendar').datetimepicker({
-    //     format: 'L',
-    //     inline: true
-    // });
-
-    // --
     $('#calendar').datepicker({
         format: 'YY-M-D',
         todayHighlight: true,
@@ -125,6 +135,7 @@
         let getDate = $(this).datepicker('getDate');
         let splitDate = getDate.toString().split(" ");
         let valueCurrent = $(".input-number").val();
+        let year, month, day;
 
         if (splitDate[0] === "Sun" || splitDate[0] === "Sat") {
             let price = 150000;
@@ -132,14 +143,20 @@
 
             $("#price-tiket").text(price);
             $("#total-price").text(totalPrice);
+            $("#total_pembayaran").val(totalPrice);
         } else {
             let price = 120000;
             let totalPrice = price * valueCurrent;
 
             $("#price-tiket").text(price);
             $("#total-price").text(totalPrice);
+            $("#total_pembayaran").val(totalPrice);
         }
-        $("#date-arrival").text(splitDate[0]+", "+splitDate[1]+" "+splitDate[2]+" "+splitDate[3]);
+        splitDate[1] == 'Jan' ? month = '01' : splitDate[1] == 'Feb' ? month = '02' : splitDate[1] == 'Mar' ? month = '03' : splitDate[1] == 'Apr' ? month = '04' : splitDate[1] == 'May' ? month = '05' : splitDate[1] == 'Jun' ? month = '06' : splitDate[1] == 'Jul' ? month = '07' : splitDate[1] == 'Aug' ? month = '08' : splitDate[1] == 'Sep' ? month = '09' : splitDate[1] == 'Oct' ? month = '10' : splitDate[1] == 'Nov' ? month = '11' : month = '12';
+
+        let tanggal_wisata = splitDate[3]+'-'+month+'-'+splitDate[2];
+        $("#date-arrival").text(splitDate[0]+", "+splitDate[2]+" "+splitDate[1]+" "+splitDate[3]);
+        $("#tanggal_wisata").val(tanggal_wisata);
     });
 
     $('.btn-number').click(function(e){
@@ -163,6 +180,7 @@
                     // --
                     let totalPrice = parseInt(getTotalPrice) - parseInt(getPrice);
                     $("#total-price").text(totalPrice);
+                    $("#total_pembayaran").val(totalPrice);
                 } 
                 if(parseInt(input.val()) == input.attr('min')) {
                     $(this).attr('disabled', true);
@@ -176,6 +194,7 @@
                     // --
                     let totalPrice = parseInt(getPrice) + parseInt(getTotalPrice);
                     $("#total-price").text(totalPrice);
+                    $("#total_pembayaran").val(totalPrice);
                 }
                 if(parseInt(input.val()) == input.attr('max')) {
                     $(this).attr('disabled', true);
@@ -240,3 +259,8 @@
         }
     });
 </script>
+
+
+<?php
+    unset($_SESSION["error"]);
+?>

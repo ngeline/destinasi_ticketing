@@ -4,20 +4,17 @@
 
     if(isset($_GET["id"])){
         $id = $_GET["id"];
-        $date = date("Y-m-d H:i:s");
-
         $query      = mysqli_query($connection, "UPDATE pesanan SET
-                status_pesanan = '1',
-                updatedAt = '$date'
+                status_pesanan = '2'
             WHERE id = '$id'
         ");
 
         if($query){
-            header('location: '.$base_url.'/admin/pesanan/pesanan.php?pesanan');
+            header('location: '.$base_url.'/pesanan.php?pesanan');
             return false;
         }else{
-            $_SESSION['error'] = "Something wrong in server!";
-            header('location: '.$base_url.'/admin/pesanan/pesanan.php?pesanan');
+            $_SESSION['error'] = "GAGAL MEMBATALKAN PESANAN!";
+            header('location: '.$base_url.'/pesanan.php?id='.$id);
             return false;
         }
     }

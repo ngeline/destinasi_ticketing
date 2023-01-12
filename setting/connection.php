@@ -1,7 +1,7 @@
 <?php
     $host = "localhost";
     $username = "root";
-    $password = "";
+    $password = "pejantantangguh";
     $database = "ticketing_app";
     $port = 3306;
     $urlPort = 80;
