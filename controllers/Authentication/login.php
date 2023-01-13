@@ -4,6 +4,7 @@
     if(isset($_POST["login"])){
         $username = htmlspecialchars($_POST["username"]);
         $password = $_POST["password"];
+        var_dump($connection);
         $check_user = mysqli_query($connection, "SELECT id, name, username, email, password, level FROM users WHERE username = '$username'");
 
         if(mysqli_num_rows($check_user) === 1) {

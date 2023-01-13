@@ -135,7 +135,7 @@
             <?php 
               }else{
             ?>
-            <a href="wisata/wisata.php?wisata" class="nav-link <?php if (isset($_GET["wisata"])){echo "active"; }?>">
+            <a href="pesanan/pesanan.php?pesanan" class="nav-link <?php if (isset($_GET["pesanan"])){echo "active"; }?>">
             <?php
               }
             ?>

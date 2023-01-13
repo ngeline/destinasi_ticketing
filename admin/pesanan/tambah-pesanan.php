@@ -60,12 +60,20 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="Harga">Harga</label>
-                            <input type="number" name="harga" class="form-control" id="harga" placeholder="Harga">
-                        </div>
-                        <div class="form-group">
                             <label for="jumlah_orang">Jumlah Orang Pengikut</label>
                             <input type="number" name="jumlah_orang" class="form-control" id="jumlah_orang" placeholder="Jumlah Orang" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="Harga">Harga</label>
+                            <select name="harga" id="harga" class="form-control">
+                              <option value="" disabled selected>===== Pilih Harga =====</option>
+                              <option value="150000">150000</option>
+                              <option value="120000">120000</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Harga">Total Pembayaran</label>
+                            <input type="number" name="total_pembayaran" class="form-control" id="total_pembayaran" placeholder="Total Pembayaran" readonly>
                         </div>
                         <div class="form-group">
                             <label for="tanggal_wisata">Tanggal Wisata</label>
@@ -92,5 +100,23 @@
 </div>
 
 
-
 <?php include('../Layouts/footer.php') ?>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#harga').on('change', function(){
+      let harga = $(this).val();
+      let jumlah_orang = $('#jumlah_orang').val();
+      
+      let total = harga * jumlah_orang;
+      $('#total_pembayaran').val(total);
+    })
+    $('#jumlah_orang').on('input', function(){
+      let jumlah_orang = $(this).val();
+      let harga = $('#harga').val();
+      
+      let total = harga * jumlah_orang;
+      $('#total_pembayaran').val(total);
+    })
+  });
+</script>

@@ -8,14 +8,12 @@
 
   $id = $_GET["id"];
 
-  $wisata = mysqli_query($connection, "SELECT id, nama_wisata FROM wisata");
-  $permainan = mysqli_query($connection, "SELECT id, nama_permainan FROM permainan");
-  $pesanan = mysqli_query($connection, "SELECT ps.*, u.name, w.nama_wisata, p.nama_permainan, p.harga
-                        FROM pesanan ps, users u, wisata w, permainan p
-                        WHERE ps.user_id = u.id
-                        AND ps.wisata_id = w.id
-                        AND ps.permainan_id = p.id
-                        AND ps.id = '$id'
+  $wisata = mysqli_query($connection, "SELECT id, nama_wisata FROM wisata ORDER BY id DESC");
+  $pesanan = mysqli_query($connection, "SELECT ps.*, u.name, w.nama_wisata
+                            FROM pesanan ps, users u, wisata w
+                            WHERE ps.user_id = u.id
+                            AND ps.wisata_id = w.id
+                            AND ps.id = '$id'
                         ");
   $pesanan = mysqli_fetch_assoc($pesanan);
 
@@ -54,7 +52,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Nama Pengunjung</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama Pengunjung" value="<?= $pesanan["name"] ?>">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama Pengunjung" value="<?= $pesanan['name'] ?>">
                         </div>
                         <div class="form-group">
                             <label for="wisata_id">Nama Wisata</label>
@@ -63,52 +61,63 @@
                                 <?php if(!is_null($wisata)){ 
                                     foreach($wisata as $data){
                                   ?>
-                                <option value="<?= $data["id"] ?>" <?php if($pesanan['wisata_id'] == $data['id']){ ?> selected <?php } ?>><?= $data["nama_wisata"] ?></option>
+                                <option value="<?= $data["id"] ?>" selected><?= $data["nama_wisata"] ?></option>
                                 <?php 
                                     }
                                   }
                                 ?>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="permainan_id">Nama Permainan</label>
-                            <select name="permainan_id" id="permainan_id" class="form-control">
-                                <option value="" selected disabled>===== Pilih Permainan =====</option>
-                                <?php if(!is_null($permainan)){ 
-                                    foreach($permainan as $dt){
-                                  ?>
-                                <option value="<?= $dt["id"] ?>" <?php if($pesanan['permainan_id'] == $dt['id']){ ?> selected <?php } ?>><?= $dt["nama_permainan"] ?></option>
-                                <?php 
-                                    }
-                                  }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="Harga">Harga</label>
-                            <input type="number" name="harga" class="form-control" id="harga" placeholder="Harga" value="<?= $pesanan["harga"] ?>">
                         </div>
                         <div class="form-group">
                             <label for="jumlah_orang">Jumlah Orang Pengikut</label>
-                            <input type="number" name="jumlah_orang" class="form-control" id="jumlah_orang" placeholder="Jumlah Orang" value="<?= $pesanan["jumlah_orang"] ?>">
+                            <input type="number" name="jumlah_orang" class="form-control" id="jumlah_orang" placeholder="Jumlah Orang" value="<?= $pesanan['jumlah_orang'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="Harga">Harga</label>
+                            <select name="harga" id="harga" class="form-control">
+                              <option value="" disabled selected>===== Pilih Harga =====</option>
+                              <?php 
+                                if($pesanan['total_pembayaran'] / $pesanan['jumlah_orang'] == 150000){
+                                  echo '<option value="150000" selected>150000</option>
+                                  <option value="120000">120000</option>
+                                  ';
+                                }
+                                if($pesanan['total_pembayaran'] / $pesanan['jumlah_orang'] == 120000){
+                                  echo '<option value="150000">150000</option>
+                                  <option value="120000" selected>120000</option>
+                                  ';
+                                }
+                              ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Harga">Total Pembayaran</label>
+                            <input type="number" name="total_pembayaran" class="form-control" id="total_pembayaran" placeholder="Total Pembayaran" value="<?= $pesanan['total_pembayaran'] ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="tanggal_wisata">Tanggal Wisata</label>
-                            <input type="date" name="tanggal_wisata" class="form-control" id="tanggal_wisata" placeholder="Tanggal Wisata" value="<?= $pesanan["tanggal_wisata"] ?>">
+                            <input type="date" name="tanggal_wisata" class="form-control" id="tanggal_wisata" placeholder="Tanggal Wisata" value="<?= $pesanan['tanggal_wisata'] ?>" >
                         </div>
                         <div class="form-group">
                           <label for="status_pesanan">Status Pesanan</label>
                           <select name="status_pesanan" id="status_pesanan" class="form-control">
                             <option value="" selected disabled> === Pilih Status Pesanan === </option>
-                            <option value="1" <?php if($pesanan['status_pesanan'] == 1){ ?> selected <?php } ?>>Sudah Dibayar</option>
-                            <option value="0" <?php if($pesanan['status_pesanan'] == 0){ ?> selected <?php } ?>>Belum Dibayar</option>
+                            <?php 
+                                if($pesanan['status_pesanan'] == '1'){
+                                  echo '<option value="1" selected>Sudah Dibayar</option>';
+                                  echo '<option value="0">Belum Dibayar</option>';
+                                }else{
+                                  echo '<option value="1">Sudah Dibayar</option>';
+                                  echo '<option value="0" selected>Belum Dibayar</option>';
+                                }
+                            ?>
                           </select>
                         </div>
                     </div>
                     <!-- /.card-body -->
             
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" name="simpan">Simpan Data</button>
+                        <button type="submit" class="btn btn-primary" name="simpan-edit">Simpan Data</button>
                     </div>
                 </form>
             </div>

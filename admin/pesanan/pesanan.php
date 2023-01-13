@@ -10,6 +10,7 @@
                         FROM pesanan ps, users u, wisata w
                         WHERE ps.user_id = u.id
                         AND ps.wisata_id = w.id
+                        ORDER BY id DESC
                       ");
 
   include('../layouts/header.php');

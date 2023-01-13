@@ -6,12 +6,11 @@
 
         $id = $_GET['id'];
 
-        $getUser = mysqli_query($connection, "SELECT user_id FROM pesanan WHERE id='$id'");
+        $getUser = mysqli_query($connection, "SELECT user_id FROM pesanan WHERE id='$id' LIMIT 1");
         $getUser = mysqli_fetch_assoc($getUser);
         $getUser = $getUser["user_id"];
 
-        // delete user
-        $userDel = mysqli_query($connection, "DELETE FROM users WHERE id='$getUser'");
+        // delete pesanan
         $pesananDel = mysqli_query($connection, "DELETE FROM pesanan WHERE id='$id'");
 
 

@@ -8,7 +8,7 @@
         $permainan_id   = $_POST["permainan_id"];
         $harga          = $_POST["harga"];
         $jumlah_orang   = $_POST["jumlah_orang"];
-        $total_pembayaran = $harga * $jumlah_orang;
+        $total_pembayaran = $_POST['total_pembayaran'];
         $tanggal_wisata = $_POST["tanggal_wisata"];
         $status_pesanan = $_POST["status_pesanan"];
         $password       = password_hash("pengunjung", PASSWORD_BCRYPT);
@@ -26,10 +26,9 @@
 
         $date = date("Y-m-d H:i:s");
 
-        $query      = mysqli_query($connection, "INSERT INTO pesanan (user_id, wisata_id, permainan_id, total_pembayaran, jumlah_orang, tanggal_wisata, status_admin, status_pesanan, createdAt, updatedAt) VALUES (
+        $query      = mysqli_query($connection, "INSERT INTO pesanan (user_id, wisata_id, total_pembayaran, jumlah_orang, tanggal_wisata, status_admin, status_pesanan, createdAt, updatedAt) VALUES (
             '$getUser',
             '$wisata_id',
-            '$permainan_id',
             '$total_pembayaran',
             '$jumlah_orang',
             '$tanggal_wisata',
@@ -38,6 +37,7 @@
             '$date',
             '$date'
         )");
+        var_dump($query);
 
         if($status_pesanan == 1){
             $getPesanan = mysqli_query($connection, "SELECT id, total_pembayaran FROM pesanan ORDER BY id DESC LIMIT 1");

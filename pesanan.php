@@ -21,7 +21,9 @@
                         <div class="tusc text_align_left">
                             <div class="italy">
                                 <h3><?= $data["nama_wisata"] ?></h3>
+                                <br>
                                 <h3>Harga <span>Rp <?= $data["total_pembayaran"] ?> / <?= $data["jumlah_orang"] ?> orang</span></h3>
+                                <p>Tanggal Wisata : <?= date('d F Y', strtotime($data["tanggal_wisata"])) ?></p>
                             </div>
                         </div>
                         <?php if($data['status_pesanan'] != 2){ ?>
