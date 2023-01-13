@@ -6,8 +6,7 @@
     header("Location:".$base_url.'/admin/login.php');
   }
 
-  $wisata = mysqli_query($connection, "SELECT id, nama_wisata FROM wisata");
-  $permainan = mysqli_query($connection, "SELECT id, nama_permainan FROM permainan");
+  $wisata = mysqli_query($connection, "SELECT id, nama_wisata FROM wisata ORDER BY id DESC LIMIT 1");
 
   include('../layouts/header.php');
   include('../layouts/navbar.php');
@@ -54,20 +53,6 @@
                                     foreach($wisata as $data){
                                   ?>
                                 <option value="<?= $data["id"] ?>"><?= $data["nama_wisata"] ?></option>
-                                <?php 
-                                    }
-                                  }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="permainan_id">Nama Permainan</label>
-                            <select name="permainan_id" id="permainan_id" class="form-control">
-                                <option value="" selected disabled>===== Pilih Permainan =====</option>
-                                <?php if(!is_null($permainan)){ 
-                                    foreach($permainan as $dt){
-                                  ?>
-                                <option value="<?= $dt["id"] ?>"><?= $dt["nama_permainan"] ?></option>
                                 <?php 
                                     }
                                   }

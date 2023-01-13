@@ -93,7 +93,7 @@
                     <?php }?>
 
                   </tbody>
-                  <tfoot>
+                  <!-- <tfoot>
                     <tr>
                       <th>No</th>
                       <th>Nama Pengunjung</th>
@@ -103,7 +103,7 @@
                       <th>Total Pembayaran | Status Pembayaran</th>
                       <th>Action</th>
                     </tr>
-                  </tfoot>
+                  </tfoot> -->
                 </table>
               </div>
               <!-- /.card-body -->
