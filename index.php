@@ -1,7 +1,5 @@
 <?php 
    include('ticketing/layouts/header.php');
-   
-   $wisata = mysqli_query($connection, "SELECT * FROM permainan LIMIT 4");
 ?>
 <!-- top -->
       <div class="full_bg">

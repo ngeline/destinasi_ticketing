@@ -1,7 +1,5 @@
 <?php 
    include('ticketing/layouts/header.php');
-   
-   $wisata = mysqli_query($connection, "SELECT * FROM permainan LIMIT 4");
 ?>
 
 <div class="packages" id="#permainan">
@@ -95,7 +93,7 @@
                                 <div class="col-md-6">
                                     <p>arrival date</p>
                                     <h4 id="date-arrival"></h4>
-                                    <input type="text" name="user_id" value="<?= $_SESSION["login"]["id"] ?>" hidden>
+                                    <input type="text" name="user_id" value="<?= (isset($_SESSION["login"])) ? $_SESSION["login"]["id"] : "" ?>" hidden>
                                     <input type="text" name="tanggal_wisata" id="tanggal_wisata" hidden>
                                 </div>
                                 <div class="col-md-3">

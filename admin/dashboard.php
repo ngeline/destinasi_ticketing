@@ -13,11 +13,9 @@
 
 
 
-  $data1 = mysqli_query($connection, "SELECT * FROM permainan ");
   $data2 = mysqli_query($connection, "SELECT * FROM pesanan ");
   $data3 = mysqli_query($connection, "SELECT * FROM t_pembayaran ");
 
-  $jml_permainan = mysqli_num_rows($data1);
   $jml_pesanan = mysqli_num_rows($data2);
   $jml_pembayaran = mysqli_num_rows($data3);
 
